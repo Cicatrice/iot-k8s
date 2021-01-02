@@ -1,0 +1,25 @@
+name: build images
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v2
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+    - name: build the image
+      working-directory: ./images/status-screen
+      run: |
+        docker buildx build \
+          --push \
+          --tag ghcr.io/Cicatrice/status-screen:latest \
+          --platform linux/arm64 \
+          . 
+      
+    
