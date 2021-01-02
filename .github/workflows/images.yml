@@ -18,7 +18,7 @@ jobs:
       run: |
         docker buildx build \
           --push \
-          --tag ghcr.io/Cicatrice/status-screen:latest \
+          --tag ghcr.io/cicatrice/status-screen:latest \
           --platform linux/arm64 \
           . 
       
