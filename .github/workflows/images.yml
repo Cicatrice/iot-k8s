@@ -3,6 +3,8 @@ name: build images
 on:
   push:
     branches: master
+    paths:
+    - "./images/status-screen/**"
 
 jobs:
   build:
@@ -18,6 +20,7 @@ jobs:
       run: |
         docker buildx build \
           --push \
+          --squash \
           --tag ghcr.io/cicatrice/status-screen:latest \
           --platform linux/arm64 \
           . 
